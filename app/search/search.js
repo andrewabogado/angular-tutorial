@@ -9,4 +9,13 @@ angular.module('myApp.search', ['ngRoute'])
 
   .controller('SearchController', function() {
     console.log("In Search Controller...");
+  })
+
+  .factory('SearchService', function($http) {
+    var service = {
+      query: function (term) {
+        return $http.get('/search/' + term);
+      }
+    };
+    return service;
   });
